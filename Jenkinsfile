@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('checkout') {
       steps {
-        sh 'rm -rf  bus_booking'
+        sh 'rm -rf  weather-update'
         sh 'https://github.com/sudhasanshi/weather-update.git'
       }
     }
