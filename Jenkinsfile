@@ -3,7 +3,7 @@ environment {
 }
 pipeline {
   agent {
-    label 'king'
+    any
   }
   stages {
     stage('checkout') {
