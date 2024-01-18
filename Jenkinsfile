@@ -2,8 +2,7 @@ environment {
     MAVEN_HOME = tool 'Maven'
 }
 pipeline {
-  agent {
-    any
+  agent any
   }
   stages {
     stage('checkout') {
