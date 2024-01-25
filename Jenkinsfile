@@ -27,15 +27,27 @@ pipeline {
                 }
             }
         }
+
+        stage('Run JAR Locally') {
+            steps {
+                script {
+                    // Run the JAR file using java -jar
+                    sh "nohup timeout 10s java -jar target/weather-forecast-app-1.0-SNAPSHOT.jar > output.log 2>&1 &"
+                    // Sleep for a while to allow the application to start (adjust as needed)
+                    sleep 10
+                }
+            }
+        }
         
         stage('deploy') {
             steps {
-             
-                sh "cp /home/sudha/workspace/weather-app/target/weather-forecast-app-1.0-SNAPSHOT.jar /opt/apache-tomcat-8.5.98/webapps/"
-                script {
+                sh 'ssh root@172.31.3.184'
+                sh "scp /home/king/workspace/weather-app/target/weather-forecast-app-1.0-SNAPSHOT.jar root@172.31.3.184:/opt/apache-tomcat-8.5.98/webapps/"
+            }
+			script {
                sh ' java -jar /opt/apache-tomcat-8.5.98/webapps/weather-forecast-app-1.0-SNAPSHOT.jar '
                 }
-            }
+
         }
         
     }
