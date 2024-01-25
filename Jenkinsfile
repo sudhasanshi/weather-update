@@ -33,7 +33,7 @@ pipeline {
              
                 sh "cp /home/sudha/workspace/weather-app/target/weather-forecast-app-1.0-SNAPSHOT.jar /opt/apache-tomcat-8.5.98/webapps/"
                 script {
-               sh ' java -jar weather-forecast-app-1.0-SNAPSHOT.jar'
+               sh ' java -jar /opt/apache-tomcat-8.5.98/webapps/weather-forecast-app-1.0-SNAPSHOT.jar '
                 }
             }
         }
