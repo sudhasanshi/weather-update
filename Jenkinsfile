@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'king'
+        label 'sudha'
     }
     stages {
         stage('checkout') {
